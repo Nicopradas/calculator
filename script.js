@@ -33,7 +33,7 @@ function operate(num1,num2,operator){
     }
 
 }
-let num1 = parseInt(prompt('Write first number'));
-let num2 = parseInt(prompt('Write second number'));
-let operator = (prompt('What operator (ex: add, substract, multiply, divide)'));
-operate(num1,num2,operator);
+// let num1 = parseInt(prompt('Write first number'));
+// let num2 = parseInt(prompt('Write second number'));
+// let operator = (prompt('What operator (ex: add, substract, multiply, divide)'));
+// operate(num1,num2,operator);
