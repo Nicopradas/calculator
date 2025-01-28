@@ -58,7 +58,7 @@ function operate(result){
     }
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
-    else if (resultincludes('/')){
+    else if (result.includes('/')){
         numbers = result.split('/');
         numbers[1] = numbers[1].slice(0,-1);
         console.log(numbers);
@@ -68,24 +68,6 @@ function operate(result){
 
 
 
-// function operate(num1,num2,operator){
-    
-//     if (operator == 'add'){
-//         console.log(add(num1,num2));
-//     } else if(operator == 'substract'){
-//         console.log(substract(num1,num2));
-
-//     } else if (operator == 'multiply'){
-//         console.log(multiply(num1,num2));
-
-//     } else if(operator == 'divide'){
-//         console.log(divide(num1,num2));
-
-//     }  else{
-//         console.log('THAT OPERATION IS NOT VALID');
-//     }
-
-// }
 
 const buttons = [
     document.querySelector('#zero'),
@@ -106,9 +88,7 @@ const buttons = [
     document.querySelector('#divides'),
     document.querySelector('#clear'),
 ]    
-    const results = document.querySelector('#result');
-
-
+const results = document.querySelector('#result');
 let numbers=[];
 
 const button = buttons.map((item)=>{
@@ -120,7 +100,6 @@ const button = buttons.map((item)=>{
         //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT BEFORE +
         if(item == adds ){
             numbers = result.textContent.split('+');
-            // console.log(numbers);
             //IF THE SECOND DIGIT IS NOT EMPTY, THEN THE OPERATION CAN BE DONE
             if (numbers[1]!=''){
                 result.textContent= (add(numbers[0],numbers[1]));
@@ -159,7 +138,6 @@ const button = buttons.map((item)=>{
 
         //IF THE BUTTON IS EQUAL 
         if (item == equal){
-            //IF RESULT.TEXCONTENT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
             operate(result.textContent);   
             
         }
