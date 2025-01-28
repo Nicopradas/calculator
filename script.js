@@ -1,6 +1,9 @@
 
 function add(num1,num2){
-    return num1+num2;
+    number1 =parseInt(num1);
+    number2 =parseInt(num2);
+
+    return number1+number2;
 }
 
 function substract(num1,num2){
@@ -48,8 +51,10 @@ const buttons = [
     document.querySelector('#seven'),
     document.querySelector('#eight'),
     document.querySelector('#nine'),
-]
 
+    document.querySelector('#adds'),
+    document.querySelector('#equal'),
+]    
     const adds = document.querySelector('#adds');
     const substracts = document.querySelector('#substracts');
     const multiplies = document.querySelector('#multiplies');
@@ -65,9 +70,32 @@ const buttons = [
 // two.addEventListener('click', ()=>{
 //     result.textContent+= two.textContent;
 // })
+let numbers=[];
+
 const button = buttons.map((item)=>{
+
     item.addEventListener('click', ()=>{
-        result.textContent+= item.textContent;
+
+            result.textContent+= item.textContent;
+
+        //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT BEFORE +
+        if(item == adds ){
+            numbers = result.textContent.split('+');
+            console.log(numbers);
+            //IF THE SECOND DIGIT IS NOT EMPTY, THEN THE OPERATION CAN BE DONE
+            if (numbers[1]!=''){
+                result.textContent= (add(numbers[0],numbers[1]));
+
+            }
+        }
+        //IF THE BUTTON IS EQUAL THEN IF RESULT.TEXCONTENT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
+        if (item == equal){
+            if (result.textContent.indexOf('+')){
+                numbers = result.textContent.split('+');
+                result.textContent = (add(numbers[0],numbers[1]));
+            }
+        }
+            
         
     })
 })
