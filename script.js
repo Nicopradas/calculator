@@ -28,20 +28,21 @@ function divide(num1,num2){
 }
 
 function operate(result){
+    //create variable with clean operation (ex: 8+8):
+    let resultOp = result.slice(0,-1);
 
+    console.log(resultOp);
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
-    if (result.includes('+')){
-        numbers = result.split('+');
-        numbers[1] = numbers[1].slice(0,-1);
+    if (resultOp.includes('+')){
+        numbers = resultOp.split('+');
 
         console.log(numbers);
 
         results.textContent = (add(numbers[0],numbers[1]));
     //IF RESULT CONTAINS '-' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
     }  
-    else if (result.includes('-')){
-        numbers = result.split('-');
-        numbers[1] = numbers[1].slice(0,-1);
+    else if (resultOp.includes('-')){
+        numbers = resultOp.split('-');
 
         console.log(numbers);
 
@@ -50,17 +51,15 @@ function operate(result){
     }
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
-    else if (result.includes('x')){
-        numbers = result.split('x');
-        numbers[1] = numbers[1].slice(0,-1);
+    else if (resultOp.includes('x')){
+        numbers = resultOp.split('x');
         console.log(numbers);
         results.textContent = multiply(numbers[0],numbers[1]);
     }
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
-    else if (result.includes('/')){
-        numbers = result.split('/');
-        numbers[1] = numbers[1].slice(0,-1);
+    else if (resultOp.includes('/')){
+        numbers = resultOp.split('/');
         console.log(numbers);
         results.textContent = divide(numbers[0],numbers[1]);
     }
@@ -102,7 +101,9 @@ const button = buttons.map((item)=>{
             numbers = result.textContent.split('+');
             //IF THE SECOND DIGIT IS NOT EMPTY, THEN THE OPERATION CAN BE DONE
             if (numbers[1]!=''){
-                result.textContent= (add(numbers[0],numbers[1]));
+               // console.log(result.textContent);
+                //result.textContent= (add(numbers[0],numbers[1]));
+               operate(result.textContent);   
 
             }
         }
@@ -110,7 +111,7 @@ const button = buttons.map((item)=>{
         if(item == substracts){
             numbers = result.textContent.split('-');
             if (numbers[1]!=''){
-                result.textContent= (substract(numbers[0],numbers[1]));
+                operate(result.textContent);   
 
             }
         }
@@ -118,7 +119,7 @@ const button = buttons.map((item)=>{
         if(item == multiplies){
             numbers = result.textContent.split('x');
             if (numbers[1]!=''){
-                result.textContent= (multiply(numbers[0],numbers[1]));
+                operate(result.textContent);   
 
             }
         }
@@ -126,7 +127,7 @@ const button = buttons.map((item)=>{
         if(item == divides){
             numbers = result.textContent.split('/');
             if (numbers[1]!=''){
-                result.textContent= (divide(numbers[0],numbers[1]));
+                operate(result.textContent);   
 
             }
         }
@@ -135,9 +136,11 @@ const button = buttons.map((item)=>{
             result.textContent= '';
 
         }
+        
 
         //IF THE BUTTON IS EQUAL 
         if (item == equal){
+            console.log(result.textContent);
             operate(result.textContent);   
             
         }
