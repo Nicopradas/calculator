@@ -31,12 +31,10 @@ function operate(result){
     //create variable with clean operation (ex: 8+8):
     let resultOp = result.slice(0,-1);
 
-    console.log(resultOp);
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
     if (resultOp.includes('+')){
         numbers = resultOp.split('+');
 
-        console.log(numbers);
 
         results.textContent = (add(numbers[0],numbers[1]));
     //IF RESULT CONTAINS '-' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
@@ -44,23 +42,20 @@ function operate(result){
     else if (resultOp.includes('-')){
         numbers = resultOp.split('-');
 
-        console.log(numbers);
 
         results.textContent = (substract(numbers[0],numbers[1]));
 
     }
-    //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
+    //IF RESULT CONTAINS 'x' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
     else if (resultOp.includes('x')){
         numbers = resultOp.split('x');
-        console.log(numbers);
         results.textContent = multiply(numbers[0],numbers[1]);
     }
-    //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
+    //IF RESULT CONTAINS '/' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
     else if (resultOp.includes('/')){
         numbers = resultOp.split('/');
-        console.log(numbers);
         results.textContent = divide(numbers[0],numbers[1]);
     }
 }
@@ -94,40 +89,56 @@ const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
 
-            result.textContent+= item.textContent;
+            results.textContent+= item.textContent;
 
-        //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT BEFORE +
+        //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT IF ANY SIGN IS CLICKED
         if(item == adds ){
-            numbers = result.textContent.split('+');
-            //IF THE SECOND DIGIT IS NOT EMPTY, THEN THE OPERATION CAN BE DONE
+            numbers = result.textContent.split(/[-+x/]/);
+            //IF POSITION 1 OF THE CREATED ARRAY IS NOT EMPTY, THEN STORE THE NEXT SIGN FOR THE NEXT OPERATION
             if (numbers[1]!=''){
-               // console.log(result.textContent);
-                //result.textContent= (add(numbers[0],numbers[1]));
-               operate(result.textContent);   
+                if(results.textContent.slice(-1)=='+'){
+                  operate(results.textContent);
+                  results.textContent+='+';
+                }
+                
+                
+                 
 
             }
         }
 
         if(item == substracts){
-            numbers = result.textContent.split('-');
+            numbers = result.textContent.split(/[-+x/]/);
             if (numbers[1]!=''){
-                operate(result.textContent);   
+
+                if(results.textContent.slice(-1)=='-'){
+                    operate(results.textContent);
+                    results.textContent+='-';
+                  }  
 
             }
         }
 
         if(item == multiplies){
-            numbers = result.textContent.split('x');
+            numbers = result.textContent.split(/[-+x/]/);
             if (numbers[1]!=''){
-                operate(result.textContent);   
+
+                if(results.textContent.slice(-1)=='x'){
+                    operate(results.textContent);
+                    results.textContent+='x';
+                  }  
 
             }
         }
 
         if(item == divides){
-            numbers = result.textContent.split('/');
+            numbers = result.textContent.split(/[-+x/]/);
             if (numbers[1]!=''){
-                operate(result.textContent);   
+
+                if(results.textContent.slice(-1)=='/'){
+                    operate(results.textContent);
+                    results.textContent+='/';
+                  }  
 
             }
         }
@@ -138,9 +149,7 @@ const button = buttons.map((item)=>{
         }
         
 
-        //IF THE BUTTON IS EQUAL 
         if (item == equal){
-            console.log(result.textContent);
             operate(result.textContent);   
             
         }
