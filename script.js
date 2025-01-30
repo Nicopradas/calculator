@@ -74,6 +74,7 @@ const buttons = [
     document.querySelector('#seven'),
     document.querySelector('#eight'),
     document.querySelector('#nine'),
+    document.querySelector('#comma'),
 
     document.querySelector('#adds'),
     document.querySelector('#substracts'),
