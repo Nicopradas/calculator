@@ -33,7 +33,6 @@ function operate(result){
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
     if (resultOp.includes('+')){
         numbers = resultOp.split('+');
-        console.log(numbers);
 
 
         results.textContent = (add(numbers[0],numbers[1]));
@@ -89,7 +88,6 @@ let numbers=[];
 const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
-
             results.textContent+= item.textContent;
 
         //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT IF ANY SIGN IS CLICKED
@@ -98,7 +96,6 @@ const button = buttons.map((item)=>{
             //IF POSITION 1 OF THE CREATED ARRAY IS NOT EMPTY, THEN STORE THE NEXT SIGN FOR THE NEXT OPERATION
             if (numbers[1]!=''){
                 if(results.textContent.slice(-1)=='+'){
-                    console.log(results.textContent);
 
                   operate(results.textContent);
                   results.textContent+='+';
@@ -108,6 +105,12 @@ const button = buttons.map((item)=>{
                  
 
             }
+            //if adds is pressed, and there is no number first, it doesn't make effect
+
+            if(results.textContent=='+'){
+                results.textContent='';
+                
+            } 
         }
 
         if(item == substracts){
@@ -120,6 +123,10 @@ const button = buttons.map((item)=>{
                   }  
 
             }
+            if(results.textContent=='-'){
+                results.textContent='';
+                
+            } 
         }
 
         if(item == multiplies){
@@ -132,6 +139,10 @@ const button = buttons.map((item)=>{
                   }  
 
             }
+            if(results.textContent=='x'){
+                results.textContent='';
+                
+            } 
         }
 
         if(item == divides){
@@ -144,6 +155,10 @@ const button = buttons.map((item)=>{
                   }  
 
             }
+            if(results.textContent=='/'){
+                results.textContent='';
+                
+            } 
         }
 
         if(item == clear){
@@ -153,11 +168,24 @@ const button = buttons.map((item)=>{
         
 
         if (item == equal){
-            operate(result.textContent);   
+            //if equal is pressed, and there is no number first, it doesn't make effect
+            if(numbers[0]==undefined){
+                results.textContent='';
+            }else{
+                operate(result.textContent);   
+
+            }
             
         }
-            
         
+        if (item == comma){
+            if(results.textContent==','){
+                results.textContent='';
+                
+            } 
+            
+        }
+
     })
 })
 
