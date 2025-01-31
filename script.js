@@ -1,28 +1,28 @@
 
 function add(num1,num2){
-    number1 =parseInt(num1);
-    number2 =parseInt(num2);
-
+    number1 =parseFloat(num1.replace(/,/g, "."));
+    number2 =parseFloat(num2.replace(/,/g, "."));
     return number1+number2;
+   
 }
 
 function substract(num1,num2){
-    number1 =parseInt(num1);
-    number2 =parseInt(num2);
+    number1 =parseFloat(num1.replace(/,/g, "."));
+    number2 =parseFloat(num2.replace(/,/g, "."));
 
     return number1-number2;
 }
 
 function multiply(num1,num2){
-    number1 =parseInt(num1);
-    number2 =parseInt(num2);
+    number1 =parseFloat(num1.replace(/,/g, "."));
+    number2 =parseFloat(num2.replace(/,/g, "."));
 
     return number1*number2;
 }
 
 function divide(num1,num2){
-    number1 =parseInt(num1);
-    number2 =parseInt(num2);
+    number1 =parseFloat(num1.replace(/,/g, "."));
+    number2 =parseFloat(num2.replace(/,/g, "."));
 
     return number1/number2;
 }
@@ -30,10 +30,10 @@ function divide(num1,num2){
 function operate(result){
     //create variable with clean operation (ex: 8+8):
     let resultOp = result.slice(0,-1);
-
     //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
     if (resultOp.includes('+')){
         numbers = resultOp.split('+');
+        console.log(numbers);
 
 
         results.textContent = (add(numbers[0],numbers[1]));
@@ -98,6 +98,8 @@ const button = buttons.map((item)=>{
             //IF POSITION 1 OF THE CREATED ARRAY IS NOT EMPTY, THEN STORE THE NEXT SIGN FOR THE NEXT OPERATION
             if (numbers[1]!=''){
                 if(results.textContent.slice(-1)=='+'){
+                    console.log(results.textContent);
+
                   operate(results.textContent);
                   results.textContent+='+';
                 }
