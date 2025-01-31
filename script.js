@@ -89,7 +89,7 @@ const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
             results.textContent+= item.textContent;
-
+        console.log(numbers);
         //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT IF ANY SIGN IS CLICKED
         if(item == adds ){
             numbers = result.textContent.split(/[-+x/]/);
@@ -105,12 +105,19 @@ const button = buttons.map((item)=>{
                  
 
             }
-            //if adds is pressed, and there is no number first, it doesn't make effect
 
+            //if adds is pressed, and there is no number first, it doesn't make effect
             if(results.textContent=='+'){
                 results.textContent='';
-                
+
+
             } 
+            
+            //if the same sign appears at least twice, then only show once
+
+            else if(results.textContent.split('+').length - 1 >= 2){
+                result.textContent=results.textContent.slice(0,-1);
+            }
         }
 
         if(item == substracts){
@@ -123,10 +130,21 @@ const button = buttons.map((item)=>{
                   }  
 
             }
+            console.log('el index del last sign: '+results.textContent.split('').indexOf('-'));
+            
+
             if(results.textContent=='-'){
                 results.textContent='';
                 
+            } else if(results.textContent.split('-').length - 1 >= 2){
+                result.textContent=results.textContent.slice(0,-1);
+
             } 
+            
+            // else if(results.textContent.split('').indexOf('-') > 1){
+            //     result.textContent=results.textContent.slice(0,-1);
+
+            // }
         }
 
         if(item == multiplies){
@@ -142,7 +160,9 @@ const button = buttons.map((item)=>{
             if(results.textContent=='x'){
                 results.textContent='';
                 
-            } 
+            } else if(results.textContent.split('x').length - 1 >= 2){
+                result.textContent=results.textContent.slice(0,-1);
+            }
         }
 
         if(item == divides){
@@ -158,7 +178,9 @@ const button = buttons.map((item)=>{
             if(results.textContent=='/'){
                 results.textContent='';
                 
-            } 
+            } else if(results.textContent.split('/').length - 1 >= 2){
+                result.textContent=results.textContent.slice(0,-1);
+            }
         }
 
         if(item == clear){
