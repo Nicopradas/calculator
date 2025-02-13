@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 45px;
+    height: 45px;
+}
+
+.calculator{
+    display: flex;
+    width: 201px;
+    height: 351px;
+    justify-content: center;
+    align-items: flex-end;
+}
+#firstAndLastRow{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+#row{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+

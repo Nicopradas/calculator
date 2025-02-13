@@ -185,11 +185,11 @@ const button = buttons.map((item)=>{
 
         if(item == clear){
             result.textContent= '';
-
         }
         
 
         if (item == equal){
+
             //if equal is pressed, and there is no number first, it doesn't make effect
             if(numbers[0]==undefined){
                 results.textContent='';
