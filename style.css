@@ -3,9 +3,13 @@ body{
     justify-content: center;
 }
 button{
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     background-color: #7b7f80;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 20px;
+    color: white;
 }
 
 .calculator{
@@ -15,6 +19,12 @@ button{
     justify-content: center;
     align-items: flex-end;
     background-color: #505356;
+    border-radius: 10px;
+    position: relative;
+}
+#buttons{
+    margin-top: px;
+    margin-bottom: 10px;
 }
 #firstAndLastRow,#result{
     display: flex;
@@ -24,6 +34,9 @@ button{
 }
 #result{
     margin-bottom: 30px;
+    color: white;
+    font-size: 35px;
+
 }
 #row{
     display: flex;
@@ -33,9 +46,31 @@ button{
 
 /* COLOR OF BUTTONS */
 #clear{
+    font-size: 17px;
+
     background-color: #989b9d;
+
 }
 #divides,#multiplies,#substracts,#adds,#equal{
     background-color: #ff9601;
 }
-
+#window{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 10px;    
+}
+#window div{
+    border-radius: 30px;
+    width: 12px;
+    height: 12px;
+}
+#first{
+    background-color: #fe5f57;
+}
+#second{
+    background-color: #febb2d;
+}
+#third{
+    background-color: #6b6c6d;
+}
