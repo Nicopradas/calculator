@@ -5,6 +5,7 @@ body{
 button{
     width: 45px;
     height: 45px;
+    background-color: #7b7f80;
 }
 
 .calculator{
@@ -13,16 +14,28 @@ button{
     height: 351px;
     justify-content: center;
     align-items: flex-end;
+    background-color: #505356;
 }
-#firstAndLastRow{
+#firstAndLastRow,#result{
     display: flex;
     justify-content: flex-end;
     gap: 5px;
     margin-bottom: 5px;
 }
+#result{
+    margin-bottom: 30px;
+}
 #row{
     display: flex;
     gap: 5px;
     margin-bottom: 5px;
+}
+
+/* COLOR OF BUTTONS */
+#clear{
+    background-color: #989b9d;
+}
+#divides,#multiplies,#substracts,#adds,#equal{
+    background-color: #ff9601;
 }
 
