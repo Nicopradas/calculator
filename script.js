@@ -83,138 +83,24 @@ const buttons = [
     document.querySelector('#clear'),
 ]    
 const results = document.querySelector('#result');
-let numbers=[];
-
+const regex = /[0-9]/g;
+const numbers= [];
 const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
 
-if (results.textContent.length != 10){
+// IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
+if (results.textContent.length != 10 && item.textContent.match(regex)){
     results.textContent+= item.textContent;
+    numbers[0] = results.textContent;
+    console.log(numbers);
+
+}
+if(item == adds){
+    
+
 }
 
-        // for(i=0;results.textContent.length<11;i++){
-        //     // let maxSize = results.textContent;
-
-        // } 
-        console.log(numbers);
-        //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT IF ANY SIGN IS CLICKED
-        if(item == adds ){
-            numbers = result.textContent.split(/[-+x/]/);
-            //IF POSITION 1 OF THE CREATED ARRAY IS NOT EMPTY, THEN STORE THE NEXT SIGN FOR THE NEXT OPERATION
-            if (numbers[1]!=''){
-                if(results.textContent.slice(-1)=='+'){
-
-                  operate(results.textContent);
-                  results.textContent+='+';
-                }
-                
-                
-                 
-
-            }
-
-            //if adds is pressed, and there is no number first, it doesn't make effect
-            if(results.textContent=='+'){
-                results.textContent='';
-
-
-            } 
-            
-            //if the same sign appears at least twice, then only show once
-
-            else if(results.textContent.split('+').length - 1 >= 2){
-                result.textContent=results.textContent.slice(0,-1);
-            }
-        }
-
-        if(item == substracts){
-            numbers = result.textContent.split(/[-+x/]/);
-            if (numbers[1]!=''){
-
-                if(results.textContent.slice(-1)=='-'){
-                    operate(results.textContent);
-                    results.textContent+='-';
-                  }  
-
-            }
-            console.log('el index del last sign: '+results.textContent.split('').indexOf('-'));
-            
-
-            if(results.textContent=='-'){
-                results.textContent='';
-                
-            } else if(results.textContent.split('-').length - 1 >= 2){
-                result.textContent=results.textContent.slice(0,-1);
-
-            } 
-            
-            // else if(results.textContent.split('').indexOf('-') > 1){
-            //     result.textContent=results.textContent.slice(0,-1);
-
-            // }
-        }
-
-        if(item == multiplies){
-            numbers = result.textContent.split(/[-+x/]/);
-            if (numbers[1]!=''){
-
-                if(results.textContent.slice(-1)=='x'){
-                    operate(results.textContent);
-                    results.textContent+='x';
-                  }  
-
-            }
-            if(results.textContent=='x'){
-                results.textContent='';
-                
-            } else if(results.textContent.split('x').length - 1 >= 2){
-                result.textContent=results.textContent.slice(0,-1);
-            }
-        }
-
-        if(item == divides){
-            numbers = result.textContent.split(/[-+x/]/);
-            if (numbers[1]!=''){
-
-                if(results.textContent.slice(-1)=='/'){
-                    operate(results.textContent);
-                    results.textContent+='/';
-                  }  
-
-            }
-            if(results.textContent=='/'){
-                results.textContent='';
-                
-            } else if(results.textContent.split('/').length - 1 >= 2){
-                result.textContent=results.textContent.slice(0,-1);
-            }
-        }
-
-        if(item == clear){
-            result.textContent= '';
-        }
-        
-
-        if (item == equal){
-
-            //if equal is pressed, and there is no number first, it doesn't make effect
-            if(numbers[0]==undefined){
-                results.textContent='';
-            }else{
-                operate(result.textContent);   
-
-            }
-            
-        }
-        
-        if (item == comma){
-            if(results.textContent==','){
-                results.textContent='';
-                
-            } 
-            
-        }
 
 
 
