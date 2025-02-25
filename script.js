@@ -88,7 +88,15 @@ let numbers=[];
 const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
-            results.textContent+= item.textContent;
+
+if (results.textContent.length != 10){
+    results.textContent+= item.textContent;
+}
+
+        // for(i=0;results.textContent.length<11;i++){
+        //     // let maxSize = results.textContent;
+
+        // } 
         console.log(numbers);
         //IF THE BUTTON IS ADDS THEN CREATE ARRAY NUMBERS EN SEPARATE EACH DIGIT IF ANY SIGN IS CLICKED
         if(item == adds ){
@@ -207,6 +215,8 @@ const button = buttons.map((item)=>{
             } 
             
         }
+
+
 
     })
 })

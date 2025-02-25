@@ -54,6 +54,9 @@ button{
 #divides,#multiplies,#substracts,#adds,#equal{
     background-color: #ff9601;
 }
+
+/* CLOSE AND MINIMIZE WINDOW BUTTON */
+
 #window{
     display: flex;
     gap: 10px;
