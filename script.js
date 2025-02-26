@@ -1,7 +1,7 @@
 
 function add(num1,num2){
-    number1 =parseFloat(num1.replace(/,/g, "."));
-    number2 =parseFloat(num2.replace(/,/g, "."));
+    number1 =parseFloat(num1);
+    number2 =parseFloat(num2);
     return number1+number2;
    
 }
@@ -104,7 +104,33 @@ if (num.textContent.length != 10 && item.textContent.match(regex) && click==fals
 // IF BUTTON ADDS IS CLICKED THEN CHANGE "CLICK" TO TRUE AND STORE THE SIGN OF THE OPERATION IN NUMBERS ARRAY 
 if(item == adds){
     click=true;
+    console.log(click);
     numbers[1]='+';
+    // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
+    if (num2.textContent.length != 0){
+        // EMPTY NUM2 TEXTCONTENT
+        num2.textContent='';
+        // REPLACE IT AGAIN WITH NUM
+        num2.replaceWith(num);
+        // PERFORM OPERATION
+        //num.textContent= parseInt(numbers[0])+parseInt(numbers[2]);
+        num.textContent= add(numbers[0],numbers[2]);
+
+        // START AGAIN STORING THE FIRST NUMBER OF THE OPERATION IN THE ARRAY
+        numbers[0]=num.textContent;
+    }
+}
+if(item == substracts){
+    click=true;
+    numbers[1]='-';
+}
+if(item == multiplies){
+    click=true;
+    numbers[1]='x';
+}
+if(item == divides){
+    click=true;
+    numbers[1]='/';
 }
 
 // IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
