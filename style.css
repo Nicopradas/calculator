@@ -26,13 +26,13 @@ button{
     margin-top: px;
     margin-bottom: 10px;
 }
-#firstAndLastRow,#result{
+#firstAndLastRow,#num{
     display: flex;
     justify-content: flex-end;
     gap: 5px;
     margin-bottom: 5px;
 }
-#result{
+#num{
     margin-bottom: 30px;
     color: white;
     font-size: 35px;

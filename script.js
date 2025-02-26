@@ -82,25 +82,46 @@ const buttons = [
     document.querySelector('#divides'),
     document.querySelector('#clear'),
 ]    
-const results = document.querySelector('#result');
+
+const num = document.querySelector('#num');
+const num2 = document.createElement('p');
+
 const regex = /[0-9]/g;
 const numbers= [];
+let click = false;
+
 const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
-
 // IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
-if (results.textContent.length != 10 && item.textContent.match(regex)){
-    results.textContent+= item.textContent;
-    numbers[0] = results.textContent;
+if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
+    num.textContent+= item.textContent;
+    numbers[0] = num.textContent;
     console.log(numbers);
 
 }
-if(item == adds){
-    
 
+// IF BUTTON ADDS IS CLICKED THEN CHANGE "CLICK" TO TRUE AND STORE THE SIGN OF THE OPERATION IN NUMBERS ARRAY 
+if(item == adds){
+    click=true;
+    numbers[1]='+';
 }
 
+// IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
+if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
+        let text ='';
+        text+=item.textContent;
+
+        const textNode = document.createTextNode(text);
+        num2.appendChild(textNode);
+        num2.id = 'num';
+        num.replaceWith(num2);
+        
+
+        numbers[2] = num2.textContent;
+        console.log(numbers);
+    
+}
 
 
 
