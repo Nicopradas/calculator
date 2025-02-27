@@ -26,36 +26,28 @@ function divide(num1,num2){
     return number1/number2;
 }
 
-function operate(result){
-    //create variable with clean operation (ex: 8+8):
-    let resultOp = result.slice(0,-1);
-    //IF RESULT CONTAINS '+' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
-    if (resultOp.includes('+')){
-        numbers = resultOp.split('+');
+function operate(num,num2,numbers){
+    // EMPTY NUM2 TEXTCONTENT
+    num2.textContent='';
+    // REPLACE IT AGAIN WITH NUM
+    num2.replaceWith(num);
 
-
-        results.textContent = (add(numbers[0],numbers[1]));
-    //IF RESULT CONTAINS '-' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
-    }  
-    else if (resultOp.includes('-')){
-        numbers = resultOp.split('-');
-
-
-        results.textContent = (substract(numbers[0],numbers[1]));
+    // PERFORM OPERATION
+    if (numbers[1]=='+'){
+        num.textContent= add(numbers[0],numbers[2]);
+    } else if (numbers[1]=='-'){
+        num.textContent= substract(numbers[0],numbers[2]);
+    } 
+    // IF THERE IS ANY SIGN STORED IN POSITION 3, THEN STORE IT IN POSITION 1 TO START OVER AGAIN
+    if(numbers[3]){
+        numbers[1]=numbers[3];
+        console.log('nuevos: '+numbers)
 
     }
-    //IF RESULT CONTAINS 'x' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
 
-    else if (resultOp.includes('x')){
-        numbers = resultOp.split('x');
-        results.textContent = multiply(numbers[0],numbers[1]);
-    }
-    //IF RESULT CONTAINS '/' SEPARATE IT INTO AN ARRAY AND PERFORM ITS OPERATION
+    // START AGAIN STORING THE FIRST NUMBER OF THE OPERATION IN THE ARRAY
+    numbers[0]=num.textContent;
 
-    else if (resultOp.includes('/')){
-        numbers = resultOp.split('/');
-        results.textContent = divide(numbers[0],numbers[1]);
-    }
 }
 
 
@@ -112,32 +104,10 @@ if(item == adds){
     }
     
      
-
-    
-    
     
     // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
     if (num2.textContent.length != 0){
-        // EMPTY NUM2 TEXTCONTENT
-        num2.textContent='';
-        // REPLACE IT AGAIN WITH NUM
-        num2.replaceWith(num);
-
-        // PERFORM OPERATION
-        if (numbers[1]=='+'){
-            num.textContent= add(numbers[0],numbers[2]);
-        } else if (numbers[1]=='-'){
-            num.textContent= substract(numbers[0],numbers[2]);
-        } 
-        // IF THERE IS ANY SIGN STORED IN POSITION 3, THEN STORE IT IN POSITION 1 TO START OVER AGAIN
-        if(numbers[3]){
-            numbers[1]=numbers[3];
-            console.log('nuevos: '+numbers)
-
-        }
-
-        // START AGAIN STORING THE FIRST NUMBER OF THE OPERATION IN THE ARRAY
-        numbers[0]=num.textContent;
+        operate(num,num2,numbers);
     }
 }
 if(item == substracts){
@@ -151,26 +121,8 @@ if(item == substracts){
 
      // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
      if (num2.textContent.length != 0){
-        // EMPTY NUM2 TEXTCONTENT
-        num2.textContent='';
-        // REPLACE IT AGAIN WITH NUM
-        num2.replaceWith(num);
+        operate(num,num2,numbers);
 
-        // PERFORM OPERATION
-        if (numbers[1]=='+'){
-            num.textContent= add(numbers[0],numbers[2]);
-        } else if (numbers[1]=='-'){
-            num.textContent= substract(numbers[0],numbers[2]);
-        } 
-        // IF THERE IS ANY SIGN STORED IN POSITION 3, THEN STORE IT IN POSITION 1 TO START OVER AGAIN
-        if(numbers[3]){
-            numbers[1]=numbers[3];
-            console.log('nuevos: '+numbers)
-
-        }
-
-        // START AGAIN STORING THE FIRST NUMBER OF THE OPERATION IN THE ARRAY
-        numbers[0]=num.textContent;
     }
 
 
