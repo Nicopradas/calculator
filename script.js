@@ -13,16 +13,14 @@ function substract(num1,num2){
 }
 
 function multiply(num1,num2){
-    number1 =parseFloat(num1.replace(/,/g, "."));
-    number2 =parseFloat(num2.replace(/,/g, "."));
-
+    number1 =parseFloat(num1);
+    number2 =parseFloat(num2);
     return number1*number2;
 }
 
 function divide(num1,num2){
-    number1 =parseFloat(num1.replace(/,/g, "."));
-    number2 =parseFloat(num2.replace(/,/g, "."));
-
+    number1 =parseFloat(num1);
+    number2 =parseFloat(num2);
     return number1/number2;
 }
 
@@ -37,6 +35,10 @@ function operate(num,num2,numbers){
         num.textContent= add(numbers[0],numbers[2]);
     } else if (numbers[1]=='-'){
         num.textContent= substract(numbers[0],numbers[2]);
+    } else if (numbers[1]=='x'){
+        num.textContent= multiply(numbers[0],numbers[2]);
+    } else if (numbers[1]=='/'){
+        num.textContent= divide(numbers[0],numbers[2]);
     } 
     // IF THERE IS ANY SIGN STORED IN POSITION 3, THEN STORE IT IN POSITION 1 TO START OVER AGAIN
     if(numbers[3]){
@@ -134,11 +136,29 @@ if(item == substracts){
 
 if(item == multiplies){
     click=true;
-    numbers[1]='x';
+    if (!numbers[1]){
+        numbers[1]='x';
+    }else{
+        numbers[3]='x';
+    }
+    if (num2.textContent.length != 0){
+        operate(num,num2,numbers);
+
+    }
 }
+
+
 if(item == divides){
     click=true;
-    numbers[1]='/';
+    if (!numbers[1]){
+        numbers[1]='/';
+    }else{
+        numbers[3]='/';
+    }
+    if (num2.textContent.length != 0){
+        operate(num,num2,numbers);
+
+    }
 }
 
 // IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
