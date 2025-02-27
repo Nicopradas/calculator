@@ -88,6 +88,7 @@ const button = buttons.map((item)=>{
     item.addEventListener('click', ()=>{
 // IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
 if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
+
     num.textContent+= item.textContent;
     numbers[0] = num.textContent;
     //console.log(numbers);
@@ -104,8 +105,10 @@ if(item == adds){
     }else{
         numbers[3]='+';
     }
+    document.getElementById("adds").style.backgroundColor = "#955802";
+   
     
-     
+
     
     // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
     if (num2.textContent.length != 0){
@@ -120,6 +123,8 @@ if(item == substracts){
     }else{
         numbers[3]='-';
     }
+    document.getElementById("substracts").style.backgroundColor = "#955802";
+
 
      // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
      if (num2.textContent.length != 0){
@@ -141,6 +146,8 @@ if(item == multiplies){
     }else{
         numbers[3]='x';
     }
+    document.getElementById("multiplies").style.backgroundColor = "#955802";
+
     if (num2.textContent.length != 0){
         operate(num,num2,numbers);
 
@@ -155,6 +162,8 @@ if(item == divides){
     }else{
         numbers[3]='/';
     }
+    document.getElementById("divides").style.backgroundColor = "#955802";
+
     if (num2.textContent.length != 0){
         operate(num,num2,numbers);
 
@@ -174,6 +183,14 @@ if (num2.textContent.length != 10 && item.textContent.match(regex) && click==tru
 
         numbers[2] = num2.textContent;
         console.log(numbers);
+
+        if (numbers[2]){
+            document.getElementById("adds").style.backgroundColor = "#ff9601";
+            document.getElementById("substracts").style.backgroundColor = "#ff9601";
+            document.getElementById("multiplies").style.backgroundColor = "#ff9601";
+            document.getElementById("divides").style.backgroundColor = "#ff9601";
+
+        }
     
 }
 
