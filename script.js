@@ -2,7 +2,6 @@
 function add(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    console.log((number1+number2).toString().length);
     // IF IS LONGER THAN 10 DIGITS THEN USE EXPONENTIAL
     if ((number1+number2).toString().length <10){
         return number1+number2;
@@ -16,10 +15,10 @@ function add(num1,num2){
 function substract(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1+number2).toString().length <10){
-        return number1+number2;
+    if ((number1-number2).toString().length <10){
+        return number1-number2;
     } else{
-        return (number1+number2).toExponential(5);
+        return (number1-number2).toExponential(5);
     }
 
 }
@@ -27,10 +26,10 @@ function substract(num1,num2){
 function multiply(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1+number2).toString().length <10){
-        return number1+number2;
+    if ((number1*number2).toString().length <10){
+        return number1*number2;
     } else{
-        return (number1+number2).toExponential(5);
+        return (number1*number2).toExponential(5);
     }
 
 }
@@ -38,10 +37,10 @@ function multiply(num1,num2){
 function divide(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1+number2).toString().length <10){
-        return number1+number2;
+    if ((number1/number2).toString().length <10){
+        return number1/number2;
     } else{
-        return (number1+number2).toExponential(5);
+        return (number1/number2).toExponential(5);
     }
 
 }
@@ -65,7 +64,6 @@ function operate(num,num2,numbers){
     // IF THERE IS ANY SIGN STORED IN POSITION 3, THEN STORE IT IN POSITION 1 TO START OVER AGAIN
     if(numbers[3]){
         numbers[1]=numbers[3];
-        console.log('nuevos: '+numbers)
 
     }
 
@@ -73,6 +71,7 @@ function operate(num,num2,numbers){
     numbers[0]=num.textContent;
 
 }
+
 
 
 
@@ -103,6 +102,7 @@ const num2 = document.createElement('p');
 
 const regex = /[0-9]/g;
 const numbers= [];
+
 let click = false;
 
 const button = buttons.map((item)=>{
@@ -117,7 +117,10 @@ if (num.textContent.length != 10 && item.textContent.match(regex) && click==fals
 
 }
 
+if(numbers[0]){
+
 // IF BUTTON ADDS IS CLICKED THEN CHANGE "CLICK" TO TRUE AND STORE THE SIGN OF THE OPERATION IN NUMBERS ARRAY 
+
 if(item == adds){
     click=true;
     //console.log(click);
@@ -141,6 +144,7 @@ if(item == adds){
         operate(num,num2,numbers);
     }
 }
+
 if(item == substracts){
     click=true;
     // ONLY IF A SIGN DOESNT EXIST THEN STORES THE NEW ONE, IF IT DOES EXIST, STORE THE SIGN IN POSITION 3 OF ARRAY
@@ -205,6 +209,40 @@ if(item == divides){
     }
 }
 
+if (item == equal){
+    console.log(numbers);
+    // EMPTY NUM2 TEXTCONTENT
+    num2.textContent='';
+    // REPLACE IT AGAIN WITH NUM
+    num2.replaceWith(num);
+    if (numbers[1]=='+'){
+        num.textContent= add(numbers[0],numbers[2]);
+    } else if (numbers[1]=='-'){
+        num.textContent= substract(numbers[0],numbers[2]);
+    } else if (numbers[1]=='x'){
+        num.textContent= multiply(numbers[0],numbers[2]);
+    } else if (numbers[1]=='/'){
+        num.textContent= divide(numbers[0],numbers[2]);
+    } 
+    //STORE THE RESULT OF THE OPERATION IN POSITION 0 
+    numbers[0]=num.textContent;
+    //STORE THE NEXT SIGN OF THE OPERATOR IN POSITION 1
+    numbers[1]=numbers[3];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 // IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
 if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
         let text ='';
@@ -217,7 +255,6 @@ if (num2.textContent.length != 10 && item.textContent.match(regex) && click==tru
         
 
         numbers[2] = num2.textContent;
-        console.log(numbers);
 
         if (numbers[2]){
             document.getElementById("adds").style.backgroundColor = "#ff9601";
