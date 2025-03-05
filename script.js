@@ -2,26 +2,48 @@
 function add(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    return number1+number2;
+    console.log((number1+number2).toString().length);
+    // IF IS LONGER THAN 10 DIGITS THEN USE EXPONENTIAL
+    if ((number1+number2).toString().length <10){
+        return number1+number2;
+    } else{
+        return (number1+number2).toExponential(5);
+    }
+
    
 }
 
 function substract(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    return number1-number2;
+    if ((number1+number2).toString().length <10){
+        return number1+number2;
+    } else{
+        return (number1+number2).toExponential(5);
+    }
+
 }
 
 function multiply(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    return number1*number2;
+    if ((number1+number2).toString().length <10){
+        return number1+number2;
+    } else{
+        return (number1+number2).toExponential(5);
+    }
+
 }
 
 function divide(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    return number1/number2;
+    if ((number1+number2).toString().length <10){
+        return number1+number2;
+    } else{
+        return (number1+number2).toExponential(5);
+    }
+
 }
 
 function operate(num,num2,numbers){
