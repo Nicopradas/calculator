@@ -105,8 +105,12 @@ if(item == adds){
     }else{
         numbers[3]='+';
     }
+    //IF ANY OTHER BUTTON IS CLICKED WHILE ADDS IS BEING CLICKED THEN CHANGE COLOR
     document.getElementById("adds").style.backgroundColor = "#955802";
-   
+    document.getElementById("substracts").style.backgroundColor = "#ff9601";
+    document.getElementById("multiplies").style.backgroundColor = "#ff9601";
+    document.getElementById("divides").style.backgroundColor = "#ff9601";
+
     
 
     
@@ -124,7 +128,9 @@ if(item == substracts){
         numbers[3]='-';
     }
     document.getElementById("substracts").style.backgroundColor = "#955802";
-
+    document.getElementById("adds").style.backgroundColor = "#ff9601";
+    document.getElementById("multiplies").style.backgroundColor = "#ff9601";
+    document.getElementById("divides").style.backgroundColor = "#ff9601";
 
      // IF NUM2 OF THE OPERATION IS NOT EMPTY THEN PERFORMS THE OPERATION
      if (num2.textContent.length != 0){
@@ -147,6 +153,10 @@ if(item == multiplies){
         numbers[3]='x';
     }
     document.getElementById("multiplies").style.backgroundColor = "#955802";
+    document.getElementById("adds").style.backgroundColor = "#ff9601";
+    document.getElementById("substracts").style.backgroundColor = "#ff9601";
+    document.getElementById("divides").style.backgroundColor = "#ff9601";
+    
 
     if (num2.textContent.length != 0){
         operate(num,num2,numbers);
@@ -163,6 +173,9 @@ if(item == divides){
         numbers[3]='/';
     }
     document.getElementById("divides").style.backgroundColor = "#955802";
+    document.getElementById("adds").style.backgroundColor = "#ff9601";
+    document.getElementById("substracts").style.backgroundColor = "#ff9601";
+    document.getElementById("multiplies").style.backgroundColor = "#ff9601";
 
     if (num2.textContent.length != 0){
         operate(num,num2,numbers);
