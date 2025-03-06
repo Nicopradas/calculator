@@ -101,8 +101,8 @@ const num = document.querySelector('#num');
 const num2 = document.createElement('p');
 
 const regex = /[0-9]/g;
-const numbers= [];
-
+let numbers= [];
+console.log(numbers);
 let click = false;
 
 const button = buttons.map((item)=>{
@@ -110,10 +110,9 @@ const button = buttons.map((item)=>{
     item.addEventListener('click', ()=>{
 // IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
 if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
-
     num.textContent+= item.textContent;
     numbers[0] = num.textContent;
-    //console.log(numbers);
+    console.log(numbers);
 
 }
 
@@ -208,6 +207,17 @@ if(item == divides){
 
     }
 }
+if (item == clear  ){
+    // START AGAIN FROM SCRATCH
+    click=false;
+    num.textContent='';
+    numbers=[];
+
+
+}
+
+
+
 
 if (item == equal){
     console.log(numbers);
@@ -247,11 +257,11 @@ if (item == equal){
 if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
         let text ='';
         text+=item.textContent;
-
         const textNode = document.createTextNode(text);
         num2.appendChild(textNode);
         num2.id = 'num';
         num.replaceWith(num2);
+
         
 
         numbers[2] = num2.textContent;
