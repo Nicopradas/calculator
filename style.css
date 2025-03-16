@@ -1,52 +1,54 @@
 body{
     display: flex;
     justify-content: center;
+    font-family: sans-serif;
+    background-color: rgb(204, 204, 204);
 }
 button{
-    width: 42px;
-    height: 42px;
+    width: 63px;
+    height: 63px;
     background-color: #7b7f80;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 0px;
-    font-size: 20px;
+    font-size: 30px;
     color: white;
 }
 
 .calculator{
     display: flex;
-    width: 201px;
-    height: 351px;
+    width: 301.5px;
+    height: 526.5px;
     justify-content: center;
     align-items: flex-end;
     background-color: #505356;
-    border-radius: 10px;
+    border-radius: 15px;
     position: relative;
 }
 #buttons{
     margin-top: px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 #firstAndLastRow,#num{
     display: flex;
     justify-content: flex-end;
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 7.5px;
+    margin-bottom: 7.5px;
 }
 #num{
-    margin-bottom: 30px;
+    margin-bottom: 45px;
     color: white;
-    font-size: 35px;
+    font-size: 52.5px;
 
 }
 #row{
     display: flex;
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 7.5px;
+    margin-bottom: 7.5px;
 }
 
 /* COLOR OF BUTTONS */
 #clear{
-    font-size: 17px;
+    font-size: 25.5px;
 
     background-color: #989b9d;
 
@@ -60,14 +62,14 @@ button{
 
 #window{
     display: flex;
-    gap: 10px;
+    gap: 15px;
     position: absolute;
-    top: 10px;    
+    top: 15px;    
 }
 #window div{
-    border-radius: 30px;
-    width: 12px;
-    height: 12px;
+    border-radius: 45px;
+    width: 18px;
+    height: 18px;
 }
 #first{
     background-color: #fe5f57;

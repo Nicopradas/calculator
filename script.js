@@ -3,10 +3,10 @@ function add(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
     // IF IS LONGER THAN 10 DIGITS THEN USE EXPONENTIAL
-    if ((number1+number2).toString().length <10){
+    if ((number1+number2).toString().length <9){
         return number1+number2;
     } else{
-        return (number1+number2).toExponential(5);
+        return (number1+number2).toExponential(3);
     }
 
    
@@ -15,10 +15,10 @@ function add(num1,num2){
 function substract(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1-number2).toString().length <10){
+    if ((number1-number2).toString().length <9){
         return number1-number2;
     } else{
-        return (number1-number2).toExponential(5);
+        return (number1-number2).toExponential(3);
     }
 
 }
@@ -26,10 +26,10 @@ function substract(num1,num2){
 function multiply(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1*number2).toString().length <10){
+    if ((number1*number2).toString().length <9){
         return number1*number2;
     } else{
-        return (number1*number2).toExponential(5);
+        return (number1*number2).toExponential(3);
     }
 
 }
@@ -37,10 +37,10 @@ function multiply(num1,num2){
 function divide(num1,num2){
     number1 =parseFloat(num1);
     number2 =parseFloat(num2);
-    if ((number1/number2).toString().length <10){
+    if ((number1/number2).toString().length <9){
         return number1/number2;
     } else{
-        return (number1/number2).toExponential(5);
+        return (number1/number2).toExponential(3);
     }
 
 }
@@ -110,11 +110,11 @@ const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
 // IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
-if (num.textContent.length != 10 && (item.textContent.match(regex) || item.textContent == '.') && click==false){
+if (num.textContent.length != 9 && (item.textContent.match(regex) || item.textContent == '.') && click==false){
 
     // IF THERE IS ONE POINT, YOU CANNOT INPUT MORE
     if ((num.textContent.split('.').length-1) == 1){
-        if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
+        if (num.textContent.length != 9 && item.textContent.match(regex) && click==false){
             num.textContent+= item.textContent;
 
         }
@@ -265,14 +265,14 @@ if (item == equal){
 
 }
 // IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
-if (num2.textContent.length != 10 && (item.textContent.match(regex) || item.textContent == '.') && click==true){
+if (num2.textContent.length != 9 && (item.textContent.match(regex) || item.textContent == '.') && click==true){
         let text ='';
         
 
         // IF THERE IS ONE POINT, YOU CANNOT INPUT MORE
 
         if ((num2.textContent.split('.').length-1) == 1){
-            if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
+            if (num2.textContent.length != 9 && item.textContent.match(regex) && click==true){
                 text+=item.textContent;
                 const textNode = document.createTextNode(text);
                 num2.appendChild(textNode);
