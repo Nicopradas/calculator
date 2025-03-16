@@ -87,7 +87,7 @@ const buttons = [
     document.querySelector('#seven'),
     document.querySelector('#eight'),
     document.querySelector('#nine'),
-    document.querySelector('#comma'),
+    document.querySelector('#point'),
 
     document.querySelector('#adds'),
     document.querySelector('#substracts'),
@@ -101,6 +101,7 @@ const num = document.querySelector('#num');
 const num2 = document.createElement('p');
 
 const regex = /[0-9]/g;
+
 let numbers= [];
 console.log(numbers);
 let click = false;
@@ -109,8 +110,18 @@ const button = buttons.map((item)=>{
 
     item.addEventListener('click', ()=>{
 // IF THERE IS MAXIMUM 10 DIGITS AND IT IS A NUMBER, THEN SHOW NUMBER
-if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
-    num.textContent+= item.textContent;
+if (num.textContent.length != 10 && (item.textContent.match(regex) || item.textContent == '.') && click==false){
+
+    // IF THERE IS ONE POINT, YOU CANNOT INPUT MORE
+    if ((num.textContent.split('.').length-1) == 1){
+        if (num.textContent.length != 10 && item.textContent.match(regex) && click==false){
+            num.textContent+= item.textContent;
+
+        }
+    }else{
+        num.textContent+= item.textContent;
+
+    }
     numbers[0] = num.textContent;
     console.log(numbers);
 
@@ -254,15 +265,29 @@ if (item == equal){
 
 }
 // IF NUM2 IS LESS THAN 10 DIGITS AND "CLICK" IS TRUE THEN REPLACE NUM WITH NUM2
-if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
+if (num2.textContent.length != 10 && (item.textContent.match(regex) || item.textContent == '.') && click==true){
         let text ='';
-        text+=item.textContent;
-        const textNode = document.createTextNode(text);
-        num2.appendChild(textNode);
-        num2.id = 'num';
-        num.replaceWith(num2);
-
         
+
+        // IF THERE IS ONE POINT, YOU CANNOT INPUT MORE
+
+        if ((num2.textContent.split('.').length-1) == 1){
+            if (num2.textContent.length != 10 && item.textContent.match(regex) && click==true){
+                text+=item.textContent;
+                const textNode = document.createTextNode(text);
+                num2.appendChild(textNode);
+                num2.id = 'num';
+                num.replaceWith(num2);
+            }
+        }else{
+            text+=item.textContent;
+                const textNode = document.createTextNode(text);
+                num2.appendChild(textNode);
+                num2.id = 'num';
+                num.replaceWith(num2);
+    
+        }
+
 
         numbers[2] = num2.textContent;
 
