@@ -34,7 +34,7 @@ A simple yet functional web-based calculator with a clean user interface inspire
 
 ## Live Demo
 
-You can try the calculator by opening the `index.html` file in your web browser.
+You can try the calculator by visiting the GitHub Pages deployment [here](https://nicopradas.github.io/calculator/).
 
 ## Project Structure
 
