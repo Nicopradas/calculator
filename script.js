@@ -119,7 +119,14 @@ if (num.textContent.length != 9 && (item.textContent.match(regex) || item.textCo
 
         }
     }else{
-        num.textContent+= item.textContent;
+        // DOESNT ALLOW TO INPUT A POINT BEFORE FIRST NUMBER
+        if (num.textContent.at(0)==undefined && item.textContent=='.'){
+            num.textContent= num.textContent.slice(1);
+           
+        }else{
+            num.textContent+= item.textContent;
+
+        }
 
     }
     numbers[0] = num.textContent;
@@ -280,11 +287,18 @@ if (num2.textContent.length != 9 && (item.textContent.match(regex) || item.textC
                 num.replaceWith(num2);
             }
         }else{
+             // DOESNT ALLOW TO INPUT A POINT BEFORE FIRST NUMBER
+        if (num2.textContent.at(0)==undefined && item.textContent=='.'){
+            num2.textContent= num2.textContent.slice(1);
+           
+        }else{
             text+=item.textContent;
                 const textNode = document.createTextNode(text);
                 num2.appendChild(textNode);
                 num2.id = 'num';
                 num.replaceWith(num2);
+
+        }
     
         }
 
